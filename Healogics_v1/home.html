@@ -36,7 +36,7 @@
 
     .btn-primary:not(:disabled):not(.disabled):active,
     .btn-primary:not(:disabled):not(.disabled).active,
-    .show>.btn-primary.dropdown-toggle {
+    .show>.btn-primary.dropdown-toggle, .action-panel .btn.show {
       color: #fff;
       background-color: rgb(13, 97, 120);
       border-color: rgb(13, 97, 120);
@@ -127,7 +127,7 @@
               <i class="fa-solid fa-magnifying-glass"></i>
               <!-- <img src="https://img.icons8.com/ios/50/000000/search--v1.png" style="width: 20px; height: 20px;"> -->
             </span>
-            <input id="search-input" type="text" class="form-control" placeholder="Search jobs or keywords"
+            <input id="search-input" type="text" class="form-control" placeholder="Search for jobs or keywords"
               aria-label="Username" aria-describedby="addon-wrapping" />
           </div>
 
@@ -136,7 +136,7 @@
             Search
           </button>
         </div>
-        <div class="input-container-elem my-16">
+        <div class="input-container-elem my-16" id="filter-container">
           <!-- Distance Or Location Dropdown Starts -->
           <div class="dropdown margin-right-16">
             <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -145,7 +145,7 @@
             </button>
             <ul class="dist-loc dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
               <li>
-                <div class="form-check">
+                <div class="form-check mb-2 filter-item">
                   <input class="form-check-input" type="radio" name="distLocRadios" id="distLocRadio1"
                     value="option1" />
                   <label class="form-check-label" for="distLocRadio1">
@@ -154,7 +154,7 @@
                 </div>
               </li>
               <li>
-                <div class="form-check">
+                <div class="form-check mb-3 filter-item">
                   <input class="form-check-input" type="radio" name="distLocRadios" id="distLocRadio2"
                     value="option2" />
                   <label class="form-check-label" for="distLocRadio2">
@@ -162,21 +162,21 @@
                   </label>
                 </div>
               </li>
-              <li>
-                <button type="button" class="btn btn-secondary mt-3 btn-sm" data-bs-dismiss="dropdown">
+              <li class="border-top pt-3">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="dropdown">
                   Close
                 </button>
               </li>
-              <li class="d-none" id="distanceOptions">
+              <li class="d-none pt-2" id="distanceOptions">
                 <div class="mt-2">
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search by postal code"
                       aria-label="Search by postal code" />
                     <button class="btn btn-outline-secondary" type="button">
-                      Search
+                      <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                   </div>
-                  <label for="distanceSelect">Distance:</label>
+                  <label for="distanceSelect" class="mb-1">Distance:</label>
                   <select class="form-select mb-3" id="distanceSelect">
                     <option value="10">10 miles</option>
                     <option value="25">25 miles</option>
@@ -188,32 +188,36 @@
               </li>
               <li class="d-none" id="locationOptions">
                 <div class="mt-2">
-                  <div class="input-group mb-3">
+                  <div class="input-group mb-3 pt-1">
                     <input type="text" class="form-control" placeholder="Search All Locations"
                       aria-label="Search All Locations" />
                     <button class="btn btn-outline-secondary" type="button">
-                      Search
+                      <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                   </div>
                   <label for="locationRegion">Location Region/State/Province:</label>
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                    <label class="form-check-label" for="defaultCheck1">
-                      Alabama
-                    </label>
+                    <div class="filter-item">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                      <label class="form-check-label" for="defaultCheck1">
+                        Alabama
+                      </label>
+                    </div>
                   </div>
                   <!-- Add more checkboxes as needed -->
                   <label for="locationCountry">Location Country:</label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-                    <label class="form-check-label" for="defaultCheck2">
-                      United States
-                    </label>
+                  <div class="form-check mb-3">
+                    <div class="filter-item">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                      <label class="form-check-label" for="defaultCheck2">
+                        United States
+                      </label>
+                    </div>
                   </div>
                 </div>
               </li>
-              <li class="d-none" id="distLocButtonsRow">
-                <div class="clear-button me-2">Clear</div>
+              <li class="d-none pt-3 border-top filter-footer" id="distLocButtonsRow">
+                <div class="clear-button">Clear</div>
                 <button type="button" class="btn btn-primary btn-sm">
                   View Jobs
                 </button>
@@ -230,7 +234,7 @@
             </button>
             <ul class="jobCateg dropdown-menu p-3" aria-labelledby="jobCategoryDropdownButton">
               <li>
-                <div class="form-check">
+                <div class="form-check filter-item mb-1">
                   <input class="form-check-input" type="checkbox" id="medicalDirectorCheckbox" />
                   <label class="form-check-label" for="medicalDirectorCheckbox">
                     Medical Director (MD/DO)
@@ -238,7 +242,7 @@
                 </div>
               </li>
               <li>
-                <div class="form-check">
+                <div class="form-check filter-item mb-1">
                   <input class="form-check-input" type="checkbox" id="nursePractitionerCheckbox" />
                   <label class="form-check-label" for="nursePractitionerCheckbox">
                     Nurse Practitioner (NP)
@@ -246,15 +250,15 @@
                 </div>
               </li>
               <li>
-                <div class="form-check mb-3">
+                <div class="form-check mb-3 filter-item mb-1">
                   <input class="form-check-input" type="checkbox" id="physicianCheckbox" />
                   <label class="form-check-label" for="physicianCheckbox">
                     Physician (MD/DO)
                   </label>
                 </div>
               </li>
-              <li id="jobCatButtonsRow">
-                <div class="clear-button me-2">Clear</div>
+              <li id="jobCatButtonsRow" class="border-top filter-footer pt-3 filter-action-foot">
+                <div class="clear-button">Clear</div>
                 <button type="button" class="btn btn-primary btn-sm">
                   View Jobs
                 </button>
@@ -271,38 +275,53 @@
             </button>
             <ul class="time-type dropdown-menu p-3" aria-labelledby="timeTypeDropdownButton">
               <li>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="fullTimeCheckbox" />
+                <div class="form-check filter-item">
+                  <input value="full_time" class="form-check-input" type="checkbox" id="fullTimeCheckbox" />
                   <label class="form-check-label" for="fullTimeCheckbox">
                     Full Time (FT)
                   </label>
                 </div>
               </li>
               <li>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="partTimeCheckbox" />
+                <div class="form-check filter-item">
+                  <input value="part_time" class="form-check-input" type="checkbox" id="partTimeCheckbox" />
                   <label class="form-check-label" for="partTimeCheckbox">
                     Part Time (PT)
                   </label>
                 </div>
               </li>
               <li>
-                <div class="form-check mb-3">
-                  <input class="form-check-input" type="checkbox" id="asNeededCheckbox" />
-                  <label class="form-check-label" for="asNeededCheckbox">
+                <div class="form-check mb-3 filter-item">
+                  <input value="freelance" class="form-check-input" type="checkbox" id="freelanceCheckbox" />
+                  <label class="form-check-label" for="freelanceCheckbox">
                     As-needed (PRN)
                   </label>
                 </div>
               </li>
-              <li id="timeTypebuttonsRow">
-                <div class="clear-button me-2">Clear</div>
-                <button type="button" class="btn btn-primary btn-sm">
+              <li id="timeTypebuttonsRow" class="border-top pt-3 filter-footer">
+                <div class="clear-button">Clear</div>
+                <button onclick="checkAndListJobData()" type="button" class="btn btn-primary btn-sm">
                   View Jobs
                 </button>
               </li>
             </ul>
           </div>
           <!-- Time Type Dropdown Ends -->
+        </div>
+        <div class="d-none" id="filter-badge-conatiner">
+          <div id="badge-list">
+            <span class="badge rounded-pill text-bg-light">Light <span class="badge-close"><i
+                  class="fa-solid fa-xmark"></i></span></span>
+            <span class="badge rounded-pill text-bg-light">Light <span class="badge-close"><i
+                  class="fa-solid fa-xmark"></i></span></span>
+            <span class="badge rounded-pill text-bg-light">Light <span class="badge-close"><i
+                  class="fa-solid fa-xmark"></i></span></span>
+          </div>
+          <div id="clear-bt-wrap">
+            <button id="clear-filter" class="btn btn-primary btn-sm mt-3 px-3">
+              Clear All
+            </button>
+          </div>
         </div>
       </div>
       <!-- Input Container Ends here-->
@@ -388,22 +407,22 @@
       <div class="footer text-center mt-4 pb-3">
         <h6>Follow Us</h6>
         <ul class="d-flex justify-content-center footer-menu-group">
-          <li class="footer-menu-item">
+          <li class="footer-menu-item fs-20">
             <a href="https://www.facebook.com/Healogics/">
               <i class="fa-brands fa-facebook" title="Facebook"></i>
             </a>
           </li>
-          <li class="footer-menu-item">
+          <li class="footer-menu-item fs-22">
             <a href="https://www.youtube.com/user/Healogics">
               <i class="fa-brands fa-youtube" title="Youtube"></i>
             </a>
           </li>
-          <li class="footer-menu-item">
+          <li class="footer-menu-item fs-21">
             <a href="https://twitter.com/Healogics">
               <i class="fa-brands fa-x-twitter" title="X"></i>
             </a>
           </li>
-          <li class="footer-menu-item">
+          <li class="footer-menu-item fs-20">
             <a href="https://www.linkedin.com/company/healogics-llc">
               <i class="fa-brands fa-linkedin" title="Linkedin"></i>
             </a>

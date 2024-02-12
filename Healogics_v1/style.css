@@ -17,6 +17,18 @@ body, h3, h6 {
   display: flex;
 }
 
+.fs-22 {
+  font-size: 22px;
+}
+
+.fs-21 {
+  font-size: 21px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
 .fs-17 {
   font-size: 17px;
 }
@@ -127,7 +139,7 @@ button:hover {
   background-color: white;
 }
 
-#description-container{
+#description-container {
   height: max-content;
 }
 
@@ -146,7 +158,6 @@ button:hover {
 }
 
 .footer-menu-item {
-  font-size: 20px;
   margin: 0 10px;
 }
 
@@ -183,16 +194,31 @@ button:hover {
   color: #0056b3;
 }
 
-.desc-link i:hover, .clear-button:hover {
+.desc-link i:hover, .clear-button:hover, #badge-list .badge:hover, .form-check-input:hover {
   cursor: pointer;
 }
 
-.search-container .btn, #apply-job {
+.search-container .btn, #apply-job, #clear-filter {
   border-radius: 20px !important;
 }
 
 .job-card, .job-header, .description-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.155);
+}
+
+.border-top {
+  border-top: 1px solid rgba(0, 0, 0, 0.155);
+}
+
+.filter-footer{
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
 }
 
 .job-card .job-title {
@@ -219,8 +245,8 @@ button:hover {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 0;
-  right: 10;
+  top: 4;
+  right: 5;
 }
 
 .pos-relative {
@@ -247,10 +273,20 @@ button:hover {
   padding: 8px;
   font-size: medium;
 }
+
 span.highlight-icons-wrap {
   width: 20px;
   display: inline-block;
   font-size: 16px;
   text-align: center;
   margin-right: 4px;
+}
+
+.jobErrorContainer {
+  text-align: center;
+}
+
+.jobNoJobsErrorMessage, .jobCheckBackErrorMessage {
+  padding: 4px 0;
+  font-weight: bold;
 }
