@@ -1,0 +1,298 @@
+body, h3, h6 {
+  margin: 0;
+}
+
+#joblist-container {
+  background-color: white !important;
+  width: 480px;
+  text-align: left;
+}
+
+#intro-container {
+  width: 336px;
+  height: max-content;
+}
+
+.search-container, .input-container-elem {
+  display: flex;
+}
+
+.fs-22 {
+  font-size: 22px;
+}
+
+.fs-21 {
+  font-size: 21px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-17 {
+  font-size: 17px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-15 {
+  font-size: 15px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-13 {
+  font-size: 13px;
+}
+
+.mx-20 {
+  margin: 0 20px;
+}
+
+.header-logo {
+  height: auto;
+  margin-right: 24px;
+  max-width: 234px;
+  min-width: 198px;
+
+}
+
+.header-menu-item, .sign-in .menu-item {
+  text-decoration: none;
+  color: black !important;
+  font-weight: bold;
+}
+
+.header-menu-item:hover, .sign-in:hover .fa-right-to-bracket, .sign-in:hover .menu-item {
+  color: #00b8f1 !important;
+}
+
+input {
+  width: 60%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  /* background-color: #007bff; */
+  color: #fff;
+  border: 1px solid #007bff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+button:hover {
+  /* background-color: #0056b3; */
+  border-color: #0056b3;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+.margin-left-20 {
+  margin-left: 20px;
+}
+
+.margin-right-16 {
+  margin-right: 16px;
+}
+
+.padding-bottom-20 {
+  padding-bottom: 20px;
+}
+
+#header {
+  background-color: rgb(13, 97, 120);
+}
+
+.action-panel {
+  padding: 24px;
+  margin: 0 auto;
+}
+
+.action-panel, .jobsAndDescription, .footer-hr {
+  max-width: 1216px;
+}
+
+.my-16 {
+  margin: 16px 0;
+}
+
+.jobsAndDescription, #main-container {
+  background-color: rgb(240, 241, 242);
+}
+
+.border-radius {
+  border-radius: 8px;
+}
+
+.action-panel, #intro-container, #description-container {
+  background-color: white;
+}
+
+#description-container {
+  height: max-content;
+}
+
+.search-input-box {
+  max-width: 480px;
+}
+
+#intro-container {
+  padding: 40px 24px;
+}
+
+.footer-menu-group {
+  padding: 0;
+  list-style: none;
+  margin: auto;
+}
+
+.footer-menu-item {
+  margin: 0 10px;
+}
+
+.footer-menu-item a {
+  color: rgb(123, 133, 143);
+}
+
+.footer-menu-item a:hover {
+  color: rgb(69, 75, 81);
+}
+
+.form-control:focus, .form-select:focus, .form-check-input:focus {
+  border-color: #dee2e6;
+  box-shadow: none;
+}
+
+.search-input-box:focus-within {
+  border: 1px solid rgb(0, 90, 112);
+  box-shadow: rgb(0, 90, 112) 0px 0px 0px 1px;
+  outline: none;
+  border-radius: 4px;
+}
+
+.dropdown-menu {
+  width: max-content !important;
+}
+
+.clear-button {
+  display: inline-block;
+  color: #007bff;
+}
+
+.clear-button:hover {
+  color: #0056b3;
+}
+
+.desc-link i:hover, .clear-button:hover, #badge-list .badge:hover, .form-check-input:hover {
+  cursor: pointer;
+}
+
+.search-container .btn, #apply-job, #clear-filter {
+  border-radius: 20px !important;
+}
+
+.job-card, .job-header, .description-title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.155);
+}
+
+.border-top {
+  border-top: 1px solid rgba(0, 0, 0, 0.155);
+}
+
+.filter-footer{
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.job-card .job-title {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.job-card, .job-card .job-title, .desc-link i:hover {
+  color: #333333;
+}
+
+.job-card .job-title:hover, .close-desc:hover {
+  color: #212121;
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+
+.close-desc {
+  border-radius: 50%;
+  font-size: larger;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 4;
+  right: 5;
+}
+
+.pos-relative {
+  position: relative;
+}
+
+.fc-light {
+  color: #636363;
+}
+
+
+.footer-hr {
+  margin: 10px auto;
+  color: #00000052;
+}
+
+.description-title {
+  padding: 24px 40px;
+}
+
+.desc-link {
+  align-items: center;
+  display: flex;
+  padding: 8px;
+  font-size: medium;
+}
+
+span.highlight-icons-wrap {
+  width: 20px;
+  display: inline-block;
+  font-size: 16px;
+  text-align: center;
+  margin-right: 4px;
+}
+
+.jobErrorContainer {
+  text-align: center;
+}
+
+.jobNoJobsErrorMessage, .jobCheckBackErrorMessage {
+  padding: 4px 0;
+  font-weight: bold;
+}
+
+.scrollable-div {
+  height: 200px; /* Set the desired height for the scrollable div */
+  overflow: auto; /* Enable scrolling */
+  /* Optionally, you can add styles for padding, border, etc. */
+}
