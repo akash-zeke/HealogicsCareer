@@ -36,7 +36,8 @@
 
     .btn-primary:not(:disabled):not(.disabled):active,
     .btn-primary:not(:disabled):not(.disabled).active,
-    .show>.btn-primary.dropdown-toggle, .action-panel .btn.show {
+    .show>.btn-primary.dropdown-toggle,
+    .action-panel .btn.show {
       color: #fff;
       background-color: rgb(13, 97, 120);
       border-color: rgb(13, 97, 120);
@@ -61,7 +62,7 @@
       color: rgb(13, 97, 120);
       background-color: #fff;
       border-color: rgba(13, 97, 120, 0.5);
-      box-shadow: none;
+      /* box-shadow: none; */
     }
 
     .btn-outline-dark:not(:disabled):not(.disabled):active,
@@ -72,14 +73,23 @@
       color: #fff;
       background-color: rgb(13, 97, 120);
       border-color: rgb(13, 97, 120);
-      box-shadow: none;
+      /* box-shadow: none; */
     }
 
-    /* .btn-outline-dark:not(:disabled):not(.disabled):active:focus,
-      .btn-outline-dark:not(:disabled):not(.disabled).active:focus,
-      .show > .btn-outline-dark.dropdown-toggle:focus {
-        box-shadow: 0 0 0 0.25rem rgba(13, 97, 120, 0.5);
-      } */
+    .text-primary {
+      color: rgb(13, 97, 120) !important;
+    }
+
+    .pagination .active > .page-link, .pagination .page-link.active  {
+      z-index: 3;
+      color: var(--bs-pagination-active-color);
+      background-color: rgba(13, 97, 120);
+      border-color: rgba(13, 97, 120);
+    }
+
+    .page-link, .page-link:hover{
+      color: rgb(13, 97, 120);
+    }
   </style>
 </head>
 
@@ -139,12 +149,12 @@
         <div class="input-container-elem my-16" id="filter-container">
           <!-- Distance Or Location Dropdown Starts -->
           <div class="dropdown margin-right-16">
-            <button onclick="beforeShowFilterDropDown()" class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Location  <!--Distance  or Location -->
+            <button onclick="beforeShowFilterDropDown()" class="btn btn-outline-dark dropdown-toggle" type="button"
+              id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              Location <!--Distance  or Location -->
             </button>
             <ul class="dist-loc dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
-            <!--   <li>
+              <!--   <li>
                 <div class="form-check mb-2 filter-item">
                   <input class="form-check-input" type="radio" name="distLocRadios" id="distLocRadio1"
                     value="option1" />
@@ -195,9 +205,9 @@
                       <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                   </div>
-<!--                   <label for="locationRegion">Location Region/State/Province:</label>
- -->                  <div id="location-drop-down" class="form-check">
-                   <!--  <div class="filter-item">
+                  <!--                   <label for="locationRegion">Location Region/State/Province:</label> -->
+                  <div id="location-drop-down" class="form-check">
+                    <!--  <div class="filter-item">
                       <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
                       <label class="form-check-label" for="defaultCheck1">
                         Alabama
@@ -205,7 +215,7 @@
                     </div> -->
                   </div>
                   <!-- Add more checkboxes as needed -->
-                <!--   <label for="locationCountry">Location Country:</label>
+                  <!--   <label for="locationCountry">Location Country:</label>
                   <div class="form-check mb-3">
                     <div class="filter-item">
                       <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" />
@@ -310,7 +320,7 @@
         </div>
         <div id="filter-badge-conatiner">
           <div id="badge-list">
-          <!--   <span class="badge rounded-pill text-bg-light">Light <span class="badge-close"><i
+            <!--   <span class="badge rounded-pill text-bg-light">Light <span class="badge-close"><i
                   class="fa-solid fa-xmark"></i></span></span>
             <span class="badge rounded-pill text-bg-light">Light <span class="badge-close"><i
                   class="fa-solid fa-xmark"></i></span></span>
@@ -334,7 +344,7 @@
               <span id="no-of-jobs-span"></span><span> Jobs Found</span>
             </div>
             <div id="job-list"></div>
-            <div class="pagination-controller d-flex flex-column text-center py-4">
+            <div class="pagination-controller d-none flex-column text-center py-4">
 
               <nav aria-label="Page navigation example">
                 <ul id="pagination-demo" class="pagination justify-content-center"></ul>
@@ -349,7 +359,7 @@
                     <li class="page-item">
                       <span class="page-link">1</span>
                     </li>
-<!--                     <li class="page-item">
+                    <!--                     <li class="page-item">
                       <a class="page-link" href="#">2</a>
                     </li>
                     <li class="page-item">
@@ -372,6 +382,11 @@
                   <span id="current-page-description" class="fc-light">x - y of N jobs</span>
                 </div>
 
+            </div>
+            <div id="loading-spinner" class="d-flex justify-content-center">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
             </div>
           </div>
           <!-- Intro Container -->

@@ -4,13 +4,15 @@ function populateJobs(params) {
   container.innerHTML = "";
   var page = params.currentPage || 1;
   var pageSize = params.pageSize || 10;
-  var recordStartIndex = (page-1)*pageSize;
+  var recordStartIndex = (page - 1) * pageSize;
   var recordEndIndex = recordStartIndex + pageSize;
-  var dataToBeDisplayed = data.slice(recordStartIndex , recordEndIndex);
+  var dataToBeDisplayed = data.slice(recordStartIndex, recordEndIndex);
   managePagination(params);
   var jobDiv = "";
+  var pgc = document.querySelector(".pagination-controller");
+
   if (dataToBeDisplayed && dataToBeDisplayed.length) {
-    document.querySelector(".pagination-controller").classList.remove("d-none");
+    
     dataToBeDisplayed.forEach((element) => {
       var randId = element["hash"];
       jobDiv = `
@@ -41,53 +43,57 @@ function populateJobs(params) {
     jobCountSpan && (jobCountSpan.innerText = params.data.length);
 
     var pageDescriptionSpan = document.getElementById("current-page-description");
-    pageDescriptionSpan.innerText = `${recordStartIndex+1} - ${recordStartIndex + dataToBeDisplayed.length } of ${params.data.length}`
+    pageDescriptionSpan.innerText = `${recordStartIndex + 1} - ${recordStartIndex + dataToBeDisplayed.length} of ${params.data.length}`
+
+    pgc.classList.remove("d-none");
+    pgc.classList.add("d-flex");
   } else {
-    document.querySelector(".pagination-controller").classList.add("d-none");
+    pgc.classList.remove("d-flex");
+    pgc.classList.add("d-none");
     jobDiv = `<div class="jobErrorContainer"><div class="css-283mgg"><span class="css-1bsf6g3"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="176" class="wd-graphic wd-graphic-empty-state-search-gray" focusable="false" role="presentation" viewBox="0 0 360 176"><defs><path id="wd-graphic-empty-state-search-gray-path-1" d="M65.5 2C51.677 2 40.325 12.584 39.108 26.09a1 1 0 0 1-.996.91H11a1 1 0 1 1 0-2h26.213C38.939 10.91 50.945 0 65.5 0c11.476 0 21.366 6.783 25.883 16.555A11.992 11.992 0 0 1 95 16c5.592 0 10.289 3.824 11.622 9H141a1 1 0 0 1 0 2H105.779a1 1 0 0 1-.944-.82C103.98 21.527 99.901 18 95 18a9.978 9.978 0 0 0-7.728 3.653 1 1 0 0 1-1.544-1.27 12.047 12.047 0 0 1 3.803-3.067C85.313 8.268 76.138 2 65.5 2zM1 25a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H1z"></path><path id="wd-graphic-empty-state-search-gray-path-3" d="M40.5 2c-8.403 0-15.245 6.687-15.493 15.03a1 1 0 0 1-1 .97H1a1 1 0 1 1 0-2h22.063C23.825 7.037 31.34 0 40.5 0a17.466 17.466 0 0 1 13.471 6.329C54.946 6.113 55.961 6 57 6c6.343 0 11.699 4.217 13.42 10H88a1 1 0 1 1 0 2H69.672a.993.993 0 0 1-.64-.216.999.999 0 0 1-.353-.554C67.429 11.938 62.673 8 57 8c-3.225 0-6.15 1.27-8.308 3.34a1 1 0 0 1-1.384-1.442 14.013 14.013 0 0 1 4.565-2.93A15.456 15.456 0 0 0 40.5 2zM92 16a1 1 0 1 0 0 2h5a1 1 0 1 0 0-2h-5z"></path><path id="wd-graphic-empty-state-search-gray-path-5" d="M51.5 2a8.5 8.5 0 0 0-8.5 8.5 1 1 0 1 1-2 0c0-.768.082-1.517.239-2.238A6.003 6.003 0 0 0 37 14a1 1 0 0 1-1 1H20a1 1 0 1 1 0-2h15.062a8.004 8.004 0 0 1 6.918-6.936A10.501 10.501 0 0 1 51.5 0c4.94 0 9.083 3.411 10.202 8.007A7.002 7.002 0 0 1 68.71 13H95a1 1 0 1 1 0 2H67.917a1 1 0 0 1-.986-.835 5.002 5.002 0 0 0-5.85-4.08 1 1 0 0 1-1.173-.838A8.503 8.503 0 0 0 51.5 2zM0 14a1 1 0 0 1 1-1h11a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1zm12-7a1 1 0 1 0 0 2h7a1 1 0 1 0 0-2h-7z"></path><path id="wd-graphic-empty-state-search-gray-path-7" d="M38.661 6.416a7.502 7.502 0 0 1 12.397-1.952c-1.17.363-2.257.923-3.17 1.62a1 1 0 1 0 1.224 1.583c1.073-.841 2.268-1.385 3.628-1.583.053.001.107-.002.16-.01a8.004 8.004 0 0 1 8.901 6.146 1 1 0 0 0 .996.78H79a1 1 0 1 0 0-2H63.542C62.267 6.943 58.478 4 54 4c-.24 0-.489.01-.734.028A9.49 9.49 0 0 0 45.5 0c-3.64 0-6.8 2.047-8.395 5.05A8.006 8.006 0 0 0 30.252 11H12a1 1 0 1 0 0 2h19.07a1 1 0 0 0 .99-.858 6.002 6.002 0 0 1 5.725-5.138 1 1 0 0 0 .876-.588zM82 12a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1zM1 11a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H1z"></path><path id="wd-graphic-empty-state-search-gray-path-9" d="M5 0c.57 0 .827 1.836 2.077 3.086C8.327 4.336 10 4.432 10 5c0 .568-1.684.823-2.934 2.073C5.816 8.323 5.723 10 5 10c-.723 0-.854-1.762-2.104-3.012S0 5.623 0 5s1.508-.642 2.815-1.949S4.43 0 5 0z"></path><path id="wd-graphic-empty-state-search-gray-path-11" d="M3 0c.342 0 .496 1.102 1.246 1.852S6 2.659 6 3c0 .34-1.01.494-1.76 1.244S3.433 6 3 6c-.434 0-.512-1.057-1.262-1.807S0 3.373 0 3c0-.374.905-.385 1.69-1.17C2.472 1.047 2.657 0 3 0z"></path><path id="wd-graphic-empty-state-search-gray-path-13" d="M3 0c.342 0 .496 1.102 1.246 1.852S6 2.659 6 3c0 .34-1.01.494-1.76 1.244S3.433 6 3 6c-.434 0-.512-1.057-1.262-1.807S0 3.373 0 3c0-.374.905-.385 1.69-1.17C2.472 1.047 2.657 0 3 0z"></path><path id="wd-graphic-empty-state-search-gray-path-15" d="M3 0c.342 0 .496 1.102 1.246 1.852S6 2.659 6 3c0 .34-1.01.494-1.76 1.244S3.433 6 3 6c-.434 0-.512-1.057-1.262-1.807S0 3.373 0 3c0-.374.905-.385 1.69-1.17C2.472 1.047 2.657 0 3 0z"></path><path id="wd-graphic-empty-state-search-gray-path-17" d="M3 0c.342 0 .496 1.102 1.246 1.852S6 2.659 6 3c0 .34-1.01.494-1.76 1.244S3.433 6 3 6c-.434 0-.512-1.057-1.262-1.807S0 3.373 0 3c0-.374.905-.385 1.69-1.17C2.472 1.047 2.657 0 3 0z"></path><path id="wd-graphic-empty-state-search-gray-path-19" d="M3 0c.342 0 .496 1.102 1.246 1.852S6 2.659 6 3c0 .34-1.01.494-1.76 1.244S3.433 6 3 6c-.434 0-.512-1.057-1.262-1.807S0 3.373 0 3c0-.374.905-.385 1.69-1.17C2.472 1.047 2.657 0 3 0z"></path><circle id="wd-graphic-empty-state-search-gray-path-21" cx="2" cy="2" r="2"></circle><circle id="wd-graphic-empty-state-search-gray-path-23" cx="1.5" cy="1.5" r="1.5"></circle><circle id="wd-graphic-empty-state-search-gray-path-25" cx="1.5" cy="1.5" r="1.5"></circle><circle id="wd-graphic-empty-state-search-gray-path-27" cx="1" cy="1" r="1"></circle><circle id="wd-graphic-empty-state-search-gray-path-29" cx="1" cy="1" r="1"></circle><circle id="wd-graphic-empty-state-search-gray-path-31" cx="1" cy="1" r="1"></circle></defs><g fill="none" fill-rule="evenodd" class="wd-icon-container"><g fill-rule="nonzero" transform="translate(29 102)"><path fill="#000" fill-opacity=".04" d="M92 18C81.5 1.5 66.5-2 53.5 3c18 1.5 29.948 14.971 31.5 21 3.5-4 6-6 7-6z"></path><use fill="#CAD3D9" xlink:href="#wd-graphic-empty-state-search-gray-path-1"></use></g><g fill-rule="nonzero" transform="translate(216 43)"><path fill="#000" fill-opacity=".04" d="M54 7C48 1 43.5-.276 32 3.099c7 0 13.5.901 15 7.901 4-4.5 5.5-3 7-4z"></path><use fill="#CAD3D9" xlink:href="#wd-graphic-empty-state-search-gray-path-3"></use></g><use fill="#E6EBEE" fill-rule="nonzero" transform="translate(25 32)" xlink:href="#wd-graphic-empty-state-search-gray-path-5"></use><use fill="#E6EBEE" fill-rule="nonzero" transform="translate(222 144)" xlink:href="#wd-graphic-empty-state-search-gray-path-7"></use><use fill="#FFDB63" transform="translate(114 7)" xlink:href="#wd-graphic-empty-state-search-gray-path-9"></use><use fill="#FFDB63" transform="translate(115 89)" xlink:href="#wd-graphic-empty-state-search-gray-path-11"></use><use fill="#FFDB63" transform="translate(152 138)" xlink:href="#wd-graphic-empty-state-search-gray-path-13"></use><use fill="#FFDB63" transform="translate(322 31)" xlink:href="#wd-graphic-empty-state-search-gray-path-15"></use><use fill="#FFDB63" transform="translate(24 64)" xlink:href="#wd-graphic-empty-state-search-gray-path-17"></use><use fill="#FFDB63" transform="translate(260 98)" xlink:href="#wd-graphic-empty-state-search-gray-path-19"></use><use fill="#E6EBEE" transform="translate(260 30)" xlink:href="#wd-graphic-empty-state-search-gray-path-21"></use><use fill="#E6EBEE" transform="translate(71 73)" xlink:href="#wd-graphic-empty-state-search-gray-path-23"></use><use fill="#E6EBEE" transform="translate(230 104)" xlink:href="#wd-graphic-empty-state-search-gray-path-25"></use><use fill="#E6EBEE" transform="translate(86 130)" xlink:href="#wd-graphic-empty-state-search-gray-path-27"></use><use fill="#E6EBEE" transform="translate(100 67)" xlink:href="#wd-graphic-empty-state-search-gray-path-29"></use><use fill="#E6EBEE" transform="translate(221 56)" xlink:href="#wd-graphic-empty-state-search-gray-path-31"></use><path fill="#fff" d="M166 106c-19.882 0-36-16.118-36-36s16.118-36 36-36 36 16.118 36 36-16.118 36-36 36zm43.89 1.89l27.165 27.165a4.164 4.164 0 1 1-5.889 5.89L204 113.778l5.89-5.889z"></path><path fill="#dfe2e6" d="M163.5 105.915C182.216 104.63 197 89.042 197 70c0-19.042-14.784-34.63-33.5-35.915.826-.056 1.66-.085 2.5-.085 19.882 0 36 16.118 36 36s-16.118 36-36 36c-.84 0-1.674-.029-2.5-.085z"></path><path fill="#7b858f" d="M204.768 110.182l-12.614-12.614C185.34 104.033 176.134 108 166 108c-20.987 0-38-17.013-38-38s17.013-38 38-38 38 17.013 38 38c0 10.134-3.967 19.34-10.432 26.154l12.614 12.614 3.707-3.707 28.58 28.58a6.164 6.164 0 1 1-8.717 8.718l-28.58-28.58 3.596-3.597zM166 106c19.882 0 36-16.118 36-36s-16.118-36-36-36-36 16.118-36 36 16.118 36 36 36zm43.89 1.89l-5.89 5.888 27.166 27.167a4.164 4.164 0 0 0 5.89-5.89l-27.167-27.166z"></path></g></svg></span></div><div  class="jobNoJobsErrorMessage">There are no job openings at this time</div><div class="jobCheckBackErrorMessage" >Check back later</div></div>`
     container.innerHTML += jobDiv;
   }
-  
+
 }
 
 
-var getPaginationLiItem = function(liName,opts){
+var getPaginationLiItem = function (liName, opts) {
   var _opts = JSON.parse(JSON.stringify(opts));
   var paginationLi = document.createElement("li");
-  paginationLi.setAttribute("id" , "li-pagination"+liName);
+  paginationLi.setAttribute("id", "li-pagination" + liName);
   paginationLi.setAttribute("class", "page-item");
-  paginationLi.setAttribute("custom-data" ,liName);
+  paginationLi.setAttribute("custom-data", liName);
   var paginationLink = document.createElement("span");
   paginationLink.setAttribute("class", "page-link");
   paginationLi.appendChild(paginationLink);
-  if(liName === "previous"){
-    _opts.currentPage = _opts.currentPage -1;
+  if (liName === "previous") {
+    _opts.currentPage = _opts.currentPage - 1;
     paginationLink.textContent = "Previous";
-  } else if(liName === "next"){
-    _opts.currentPage = _opts.currentPage +1;
+  } else if (liName === "next") {
+    _opts.currentPage = _opts.currentPage + 1;
     paginationLink.textContent = "Next";
-  } else{
-    _opts.currentPage = liName ; 
+  } else {
+    _opts.currentPage = liName;
     paginationLink.textContent = liName;
   }
-  paginationLink.setAttribute( "onclick" ,`populateJobs(${JSON.stringify(_opts)})`);
+  paginationLink.setAttribute("onclick", `populateJobs(${JSON.stringify(_opts)})`);
   return paginationLi;
 }
 var CONST = {
   PAGE_NUMBER_TO_BE_DISPLAY: 5
 };
-function managePagination(opts){
+function managePagination(opts) {
   var paginationUl = document.getElementById('pagination-ul');
   var totalRecords = opts.data.length;
   var currentPage = opts.currentPage || 1;
   var startPage = opts.data.startPage || 1;
   var visiblePages = opts.data.visiblePages || 5;
-  var totalPages = Math.ceil(totalRecords /10);
+  var totalPages = Math.ceil(totalRecords / 10);
 
   paginationUl.innerHTML = "";
 
-  if(currentPage != 1){
-    var paginationLi = getPaginationLiItem("previous", opts );
+  if (currentPage != 1) {
+    var paginationLi = getPaginationLiItem("previous", opts);
     paginationLi.setAttribute("data-page", currentPage);
     paginationLi.setAttribute("data-total-pages", totalPages);
     paginationLi.setAttribute("data-start-page", startPage);
@@ -100,35 +106,35 @@ function managePagination(opts){
 
   if (totalPages <= CONST.PAGE_NUMBER_TO_BE_DISPLAY) {
     for (var i = 1; i <= totalPages; i++) {
-      var paginationLi = getPaginationLiItem(i , opts );
+      var paginationLi = getPaginationLiItem(i, opts);
       paginationUl.appendChild(paginationLi);
     }
   } else {
     if (currentPage < 3) {
       for (var i = 1; i <= visiblePages; i++) {
-        var paginationLi = getPaginationLiItem(i  , opts );
+        var paginationLi = getPaginationLiItem(i, opts);
         paginationUl.appendChild(paginationLi);
       }
     } else if (currentPage > totalPages - 2) {
-      for (var i = totalPages - visiblePages + 1 ; i <= totalPages; i++) {
-        var paginationLi = getPaginationLiItem(i ,opts);
+      for (var i = totalPages - visiblePages + 1; i <= totalPages; i++) {
+        var paginationLi = getPaginationLiItem(i, opts);
         paginationUl.appendChild(paginationLi);
       }
     } else {
       for (var i = currentPage - 2; i <= currentPage + 2; i++) {
-        var paginationLi = getPaginationLiItem(i ,opts);
+        var paginationLi = getPaginationLiItem(i, opts);
         paginationUl.appendChild(paginationLi);
       }
     }
     if (currentPage < totalPages) {
-      var paginationLi = getPaginationLiItem("next", opts );
+      var paginationLi = getPaginationLiItem("next", opts);
       paginationUl.appendChild(paginationLi);
     }
 
 
   }
 
-  var currentLiItem = document.getElementById("li-pagination"+currentPage);
+  var currentLiItem = document.getElementById("li-pagination" + currentPage);
   currentLiItem && currentLiItem.setAttribute("class", "active");
 
 
@@ -148,8 +154,8 @@ function getJobById(id) {
 
 var filterOptions = {};
 
-function getJobTypeDisplayName(jobType){
-  switch(jobType){
+function getJobTypeDisplayName(jobType) {
+  switch (jobType) {
     case "full_time":
       return "Full Time";
     case "part_time":
@@ -169,15 +175,15 @@ function search() {
   document.getElementById("search-input").value = "";
 }
 
-function filterDataWithSearchKey(data , searchKey , shouldNotIncludeKeyword) {
+function filterDataWithSearchKey(data, searchKey, shouldNotIncludeKeyword) {
   var jobLength = data.length;
-  var filteredData =  [];
+  var filteredData = [];
   for (var i = 0; i < jobLength; i++) {
     var job = JSON.stringify(data[i]);
     if (job.toLowerCase().includes(searchKey.toLowerCase())) {
-      if(shouldNotIncludeKeyword && !job.toLowerCase().includes(shouldNotIncludeKeyword.toLowerCase())){
+      if (shouldNotIncludeKeyword && !job.toLowerCase().includes(shouldNotIncludeKeyword.toLowerCase())) {
         filteredData.push(data[i]);
-      } else{
+      } else {
         filteredData.push(data[i]);
       }
     }
@@ -189,13 +195,13 @@ function filterDataWithSearchKey(data , searchKey , shouldNotIncludeKeyword) {
 function getFilteredJobData(filterOptions) {
   var searchKey = filterOptions["searchKey"] || "";
   var jobLength = staticJobData.length;
-  var filteredData = filterDataWithSearchKey(staticJobData,searchKey);
-/*   for (var i = 0; i < jobLength; i++) {
-    var job = JSON.stringify(staticJobData[i]);
-    if (job.toLowerCase().includes(searchKey.toLowerCase())) {
-      filteredData.push(staticJobData[i]);
-    }
-  } */
+  var filteredData = filterDataWithSearchKey(staticJobData, searchKey);
+  /*   for (var i = 0; i < jobLength; i++) {
+      var job = JSON.stringify(staticJobData[i]);
+      if (job.toLowerCase().includes(searchKey.toLowerCase())) {
+        filteredData.push(staticJobData[i]);
+      }
+    } */
 
   var jobTypes = filterOptions["jobTypes"] || [];
   if (jobTypes.length > 0) {
@@ -207,21 +213,21 @@ function getFilteredJobData(filterOptions) {
   var jobLocations = filterOptions["location"] || [];
   if (jobLocations.length > 0) {
     filteredData = filteredData.filter((element) => {
-      return jobLocations.includes(element["city"]);
+      return jobLocations.includes(element["state"]);
     });
   }
 
   var category = filterOptions["category"] || [];
   if (category.length > 0) {
     var categoryFilteredData = [];
-    if(category.includes("Nurse Practitioner")){
-      Array.prototype.push.apply(categoryFilteredData, filterDataWithSearchKey(filteredData,"Nurse Practitioner"));
+    if (category.includes("Nurse Practitioner")) {
+      Array.prototype.push.apply(categoryFilteredData, filterDataWithSearchKey(filteredData, "Nurse Practitioner"));
     }
-    if(category.includes("Medical Director")){
-      Array.prototype.push.apply(categoryFilteredData, filterDataWithSearchKey(filteredData,"Medical Director"));
+    if (category.includes("Medical Director")) {
+      Array.prototype.push.apply(categoryFilteredData, filterDataWithSearchKey(filteredData, "Medical Director"));
     }
-    if(category.includes("Physician")){
-      Array.prototype.push.apply(categoryFilteredData, filterDataWithSearchKey(filteredData,"Physician","Medical Director"));
+    if (category.includes("Physician")) {
+      Array.prototype.push.apply(categoryFilteredData, filterDataWithSearchKey(filteredData, "Physician", "Medical Director"));
     }
     filteredData = categoryFilteredData;
   }
@@ -229,32 +235,37 @@ function getFilteredJobData(filterOptions) {
   return filteredData;
 }
 
- 
+
 
 
 function listFilterOptions(filterOptions) {
   var filterDisplayDiv = document.getElementById("badge-list");
-  var searchElement ;
+  var searchElement;
   filterDisplayDiv.innerHTML = "";
   var clearFilterButton = document.getElementById("clear-bt-wrap");
   clearFilterButton.classList.add("d-none");
-  if(filterOptions["searchKey"]){
+  if (filterOptions["searchKey"]) {
     var searchText = filterOptions["searchKey"];
     var randId = generateRandomId(10);
     var searchElement = ` 
-    <span onclick="removeSearchFilter()" id="${randId}" class="badge rounded-pill text-bg-light">${searchText} <span class="badge-close"><i
-                  class="fa-solid fa-xmark"></i></span></span>
+    <span onclick="removeSearchFilter()" id="${randId}" class="badge rounded-pill text-bg-light">
+      ${searchText} <span class="badge-close"><iclass="fa-solid fa-xmark"></i></span>
+    </span>
     `;
     filterDisplayDiv.innerHTML += searchElement;
     clearFilterButton.classList.remove("d-none");
   }
   var jobLocation = filterOptions['location'] || [];
-  if(jobLocation.length > 0){
+  if (jobLocation.length > 0) {
     jobLocation.forEach(location => {
       var randId = generateRandomId(10);
       var locationElement = ` 
-      <span id="${randId}" onclick="removeLocationFilter('${location}')" class="badge rounded-pill text-bg-light">${location} <span class="badge-close"><i
-                  class="fa-solid fa-xmark"></i></span></span>
+      <span id="${randId}" onclick="removeLocationFilter('${location}')" class="badge rounded-pill text-bg-light">
+        ${STATES[location]}
+        <span class="badge-close">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+      </span>
       `;
       filterDisplayDiv.innerHTML += locationElement;
 
@@ -263,7 +274,7 @@ function listFilterOptions(filterOptions) {
   }
 
   var jobCategories = filterOptions['category'] || [];
-  if(jobCategories.length > 0){
+  if (jobCategories.length > 0) {
     jobCategories.forEach(category => {
       var randId = generateRandomId(10);
       var categoryElement = ` 
@@ -276,7 +287,7 @@ function listFilterOptions(filterOptions) {
   }
 
   var jobTypes = filterOptions['jobTypes'] || [];
-  if(jobTypes.length > 0){
+  if (jobTypes.length > 0) {
     jobTypes.forEach(jobType => {
       var randId = generateRandomId(10);
       var jobTypeElement = ` 
@@ -289,54 +300,54 @@ function listFilterOptions(filterOptions) {
   }
 }
 
-function removeSearchFilter(){
+function removeSearchFilter() {
   filterOptions["searchKey"] = "";
   listJobData(filterOptions);
 }
 
-function removeJobTypeFilter(jobTypeToBeRemoved){
+function removeJobTypeFilter(jobTypeToBeRemoved) {
   var jobTypes = filterOptions['jobTypes'] || [];
-  if(jobTypes.length > 0){
+  if (jobTypes.length > 0) {
     jobTypes.forEach(jobType => {
-      if(jobType === jobTypeToBeRemoved){
-        filterOptions["jobTypes"] = filterOptions["jobTypes"].filter(item => item!== jobType);
+      if (jobType === jobTypeToBeRemoved) {
+        filterOptions["jobTypes"] = filterOptions["jobTypes"].filter(item => item !== jobType);
       }
     });
   }
   listJobData(filterOptions);
 }
 
-function removeCategoryFilter(categoryToBeRemoved){
+function removeCategoryFilter(categoryToBeRemoved) {
   var jobCategories = filterOptions['category'] || [];
-  if(jobCategories.length > 0){
+  if (jobCategories.length > 0) {
     jobCategories.forEach(category => {
-      if(category === categoryToBeRemoved){
-        filterOptions["category"] = filterOptions["category"].filter(item => item!== category);
+      if (category === categoryToBeRemoved) {
+        filterOptions["category"] = filterOptions["category"].filter(item => item !== category);
       }
     });
   }
   listJobData(filterOptions);
 }
 
-function removeLocationFilter(locationToBeRemoved){
+function removeLocationFilter(locationToBeRemoved) {
   var jobLocation = filterOptions['location'] || [];
-  if(jobLocation.length > 0){
+  if (jobLocation.length > 0) {
     jobLocation.forEach(location => {
-      if(location === locationToBeRemoved){
-        filterOptions["location"] = filterOptions["location"].filter(item => item!== location);
+      if (location === locationToBeRemoved) {
+        filterOptions["location"] = filterOptions["location"].filter(item => item !== location);
       }
     });
   }
   listJobData(filterOptions);
 }
-  
+
 
 function listJobData(filterOptions) {
   listFilterOptions(filterOptions);
   var filterData = getFilteredJobData(filterOptions);
   populateJobs({
     data: filterData,
-    containerId : "job-list",
+    containerId: "job-list",
     container: document.getElementById("job-list"),
   });
 }
@@ -464,7 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   var distanceOptions = document.getElementById("distanceOptions");
   var locationOptions = document.getElementById("locationOptions");
-  var distLocButtonsRow = document.getElementById("distLocButtonsRow"); // Select buttons row
+  var distLocButtonsRow = document.getElementById("distLocButtonsRow");
 
   radios.forEach(function (radio) {
     radio.addEventListener("change", function () {
@@ -478,7 +489,6 @@ document.addEventListener("DOMContentLoaded", function () {
         closeButton.classList.add("d-none");
       }
 
-      // Show buttons row when any radio button is selected
       distLocButtonsRow.classList.remove("d-none");
     });
   });
@@ -489,9 +499,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var locationCheckboxes = document.querySelectorAll(
       '#locationOptions input[type="checkbox"]'
     );
-    distanceSelect.selectedIndex = 0; // Reset distance dropdown to the default option
+    distanceSelect.selectedIndex = 0;
     locationCheckboxes.forEach(function (checkbox) {
-      checkbox.checked = false; // Uncheck all location checkboxes
+      checkbox.checked = false;
     });
   });
 
@@ -554,11 +564,17 @@ async function fetchJobs(url, allJobs = []) {
   }
 }
 
+function openLoader() {
+  document.querySelector(".pagination-controller").classList.remove("d-none");
+}
+
 async function printAllJobs() {
   const baseUrl = 'https://api.manatal.com/open/v3/career-page/korzen-health-2/jobs/?search=healogics';
   const pageSize = 100;
   const url = `${baseUrl}&page=1&page_size=${pageSize}`;
-  
+  var spinner = document.querySelector("#loading-spinner");
+  spinner.classList.remove("d-none")
+  spinner.classList.add("d-flex")
   try {
     const allJobs = await fetchJobs(url);
     console.log(allJobs[0])
@@ -566,86 +582,87 @@ async function printAllJobs() {
     populateJobs({
       data: allJobs,
       container: document.getElementById("job-list"),
-      containerId : "job-list",
-      currentPage : 1
+      containerId: "job-list",
+      currentPage: 1
     });
     populateFilterOptions(allJobs);
+    spinner.classList.remove("d-flex")
+    spinner.classList.add("d-none")
   } catch (error) {
+    spinner.classList.remove("d-flex")
+    spinner.classList.add("d-none")
     console.error('Error:', error);
   }
 }
 
 function populateFilterOptions(allJobs) {
-    var allLocations = allJobs.map(el => el['city']);
-    var locationDropDown = document.getElementById("location-drop-down");
-    allLocations = [...new Set(allLocations)];
-    allLocations.forEach(el =>{
-      var id = generateRandomId(10);
-      var template = `
+  var allLocations = allJobs.map(el => el['state']);
+  var locationDropDown = document.getElementById("location-drop-down");
+  allLocations = [...new Set(allLocations)];
+  allLocations.forEach(el => {
+    var id = generateRandomId(10);
+    var template = `
       <div class="filter-item">
       <input class="form-check-input" type="checkbox" value="${el}" id="${id}" />
       <label class="form-check-label" for="defaultCheck1">
-        ${el}
+        ${STATES[el]}
       </label>
     </div>
       `;
-      locationDropDown.innerHTML += template;
-    /*   document.getElementById(id).addEventListener("click",function(){
-        console.log(this.id);
-      }) */
-    });
+    locationDropDown.innerHTML += template;
+  });
 }
 
-function openJobInNewTab(jobId){
+function openJobInNewTab(jobId) {
   var baseUrl = "https://www.careers-page.com/korzen-health-2/job/";
   window.open(`${baseUrl}${jobId}`, '_blank');
 }
 
-function checkAndUpdateCategoryFilter(){
+function checkAndUpdateCategoryFilter() {
   var medicalDirectorCheckbox = document.getElementById("medicalDirectorCheckbox");
   var nursePractitionerCheckbox = document.getElementById("nursePractitionerCheckbox");
   var physicianCheckbox = document.getElementById("physicianCheckbox");
 
   filterOptions['category'] = [];
-  if(medicalDirectorCheckbox.checked){
+  if (medicalDirectorCheckbox.checked) {
     filterOptions['category'].push('Medical Director');
   }
-  if(nursePractitionerCheckbox.checked){
+  if (nursePractitionerCheckbox.checked) {
     filterOptions['category'].push('Nurse Practitioner');
   }
-  if(physicianCheckbox.checked){
+  if (physicianCheckbox.checked) {
     filterOptions['category'].push('Physician');
   }
   listJobData(filterOptions);
 }
 
-function updateLocationFilter(){
+function updateLocationFilter() {
   var locationDropDown = document.getElementById("location-drop-down");
   var locationCheckboxes = document.querySelectorAll(
     '#location-drop-down input[type="checkbox"]'
   );
   var checkedLocations = [];
   locationCheckboxes.forEach(function (checkbox) {
-    if(checkbox.checked){
+    if (checkbox.checked) {
       checkedLocations.push(checkbox.value);
     }
   });
   filterOptions['location'] = checkedLocations;
   listJobData(filterOptions);
-  
+
 }
 
-function resetLocationFilter(){
-  filterOptions['location'] =[];
+function resetLocationFilter() {
+  filterOptions['location'] = [];
   listJobData(filterOptions);
 }
 
-function clearAllFilter(){
+function clearAllFilter() {
   filterOptions = {};
   listJobData(filterOptions);
 }
 
-function beforeShowFilterDropDown(){
+function beforeShowFilterDropDown() {
   var locationDropDown = document.getElementById("location-drop-down");
   var locationCheckboxes = document.querySelectorAll(
     '#location-drop-down input[type="checkbox"]'
@@ -663,11 +680,60 @@ function generateRandomId(length) {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   const charactersLength = characters.length;
   for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
 }
-/* populateJobs({
-  data: staticJobData,
-  container: document.getElementById("job-list"),
-}); */
+
+var STATES = {
+  'AL': 'Alabama',
+  'AK': 'Alaska',
+  'AZ': 'Arizona',
+  'AR': 'Arkansas',
+  'CA': 'California',
+  'CO': 'Colorado',
+  'CT': 'Connecticut',
+  'DE': 'Delaware',
+  'FL': 'Florida',
+  'GA': 'Georgia',
+  'HI': 'Hawaii',
+  'ID': 'Idaho',
+  'IL': 'Illinois',
+  'IN': 'Indiana',
+  'IA': 'Iowa',
+  'KS': 'Kansas',
+  'KY': 'Kentucky',
+  'LA': 'Louisiana',
+  'ME': 'Maine',
+  'MD': 'Maryland',
+  'MA': 'Massachusetts',
+  'MI': 'Michigan',
+  'MN': 'Minnesota',
+  'MS': 'Mississippi',
+  'MO': 'Missouri',
+  'MT': 'Montana',
+  'NE': 'Nebraska',
+  'NV': 'Nevada',
+  'NH': 'New Hampshire',
+  'NJ': 'New Jersey',
+  'NM': 'New Mexico',
+  'NY': 'New York',
+  'NC': 'North Carolina',
+  'ND': 'North Dakota',
+  'OH': 'Ohio',
+  'OK': 'Oklahoma',
+  'OR': 'Oregon',
+  'PA': 'Pennsylvania',
+  'RI': 'Rhode Island',
+  'SC': 'South Carolina',
+  'SD': 'South Dakota',
+  'TN': 'Tennessee',
+  'TX': 'Texas',
+  'UT': 'Utah',
+  'VT': 'Vermont',
+  'VA': 'Virginia',
+  'WA': 'Washington',
+  'WV': 'West Virginia',
+  'WI': 'Wisconsin',
+  'WY': 'Wyoming'
+}

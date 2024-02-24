@@ -1,4 +1,6 @@
-body, h3, h6 {
+body,
+h3,
+h6 {
   margin: 0;
 }
 
@@ -13,7 +15,8 @@ body, h3, h6 {
   height: max-content;
 }
 
-.search-container, .input-container-elem {
+.search-container,
+.input-container-elem {
   display: flex;
 }
 
@@ -61,13 +64,16 @@ body, h3, h6 {
 
 }
 
-.header-menu-item, .sign-in .menu-item {
+.header-menu-item,
+.sign-in .menu-item {
   text-decoration: none;
   color: black !important;
   font-weight: bold;
 }
 
-.header-menu-item:hover, .sign-in:hover .fa-right-to-bracket, .sign-in:hover .menu-item {
+.header-menu-item:hover,
+.sign-in:hover .fa-right-to-bracket,
+.sign-in:hover .menu-item {
   color: #00b8f1 !important;
 }
 
@@ -119,7 +125,9 @@ button:hover {
   margin: 0 auto;
 }
 
-.action-panel, .jobsAndDescription, .footer-hr {
+.action-panel,
+.jobsAndDescription,
+.footer-hr {
   max-width: 1216px;
 }
 
@@ -127,7 +135,8 @@ button:hover {
   margin: 16px 0;
 }
 
-.jobsAndDescription, #main-container {
+.jobsAndDescription,
+#main-container {
   background-color: rgb(240, 241, 242);
 }
 
@@ -135,7 +144,9 @@ button:hover {
   border-radius: 8px;
 }
 
-.action-panel, #intro-container, #description-container {
+.action-panel,
+#intro-container,
+#description-container {
   background-color: white;
 }
 
@@ -169,7 +180,9 @@ button:hover {
   color: rgb(69, 75, 81);
 }
 
-.form-control:focus, .form-select:focus, .form-check-input:focus {
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
   border-color: #dee2e6;
   box-shadow: none;
 }
@@ -194,15 +207,23 @@ button:hover {
   color: #0056b3;
 }
 
-.desc-link i:hover, .clear-button:hover, #badge-list .badge:hover, .form-check-input:hover {
+.desc-link i:hover,
+.clear-button:hover,
+#badge-list .badge:hover,
+.form-check-input:hover,
+#pagination-ul:hover {
   cursor: pointer;
 }
 
-.search-container .btn, #apply-job, #clear-filter {
+.search-container .btn,
+#apply-job,
+#clear-filter {
   border-radius: 20px !important;
 }
 
-.job-card, .job-header, .description-title {
+.job-card,
+.job-header,
+.description-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.155);
 }
 
@@ -210,7 +231,7 @@ button:hover {
   border-top: 1px solid rgba(0, 0, 0, 0.155);
 }
 
-.filter-footer{
+.filter-footer {
   display: flex;
   justify-content: space-between;
 }
@@ -219,6 +240,7 @@ button:hover {
   display: flex;
   align-items: center;
   column-gap: 8px;
+  margin-right: 8px;
 }
 
 .job-card .job-title {
@@ -226,11 +248,14 @@ button:hover {
   font-weight: bold;
 }
 
-.job-card, .job-card .job-title, .desc-link i:hover {
+.job-card,
+.job-card .job-title,
+.desc-link i:hover {
   color: #333333;
 }
 
-.job-card .job-title:hover, .close-desc:hover {
+.job-card .job-title:hover,
+.close-desc:hover {
   color: #212121;
   background-color: #f4f4f4;
   cursor: pointer;
@@ -286,13 +311,26 @@ span.highlight-icons-wrap {
   text-align: center;
 }
 
-.jobNoJobsErrorMessage, .jobCheckBackErrorMessage {
+.jobNoJobsErrorMessage,
+.jobCheckBackErrorMessage {
   padding: 4px 0;
   font-weight: bold;
 }
 
 .scrollable-div {
-  height: 200px; /* Set the desired height for the scrollable div */
-  overflow: auto; /* Enable scrolling */
-  /* Optionally, you can add styles for padding, border, etc. */
+  height: 200px;
+  overflow: auto;
+}
+
+.form-check .form-check-input:not(:checked):hover{
+  border-color: rgb(13, 97, 120);
+  box-shadow: 0 0 0 0.1rem rgba(13, 97, 120, 0.5);
+}
+
+.form-check .form-check-input {
+  margin-left: -1.3rem !important;
+}
+
+#loading-spinner{
+  padding: 180px 0;
 }
