@@ -568,24 +568,29 @@ function openLoader() {
   document.querySelector(".pagination-controller").classList.remove("d-none");
 }
 
-async function printAllJobs() {
-  const baseUrl = 'https://api.manatal.com/open/v3/career-page/korzen-health-2/jobs/?search=healogics';
+const allJobsBaseUrl = 'https://api.manatal.com/open/v3/career-page/korzen-health-2/jobs/?search=healogics';
+
+async function printAllJobs(fetchJobsFromAPI) {
   const pageSize = 100;
-  const url = `${baseUrl}&page=1&page_size=${pageSize}`;
+  const url = `${allJobsBaseUrl}&page=1&page_size=${pageSize}`;
   var spinner = document.querySelector("#loading-spinner");
   spinner.classList.remove("d-none")
   spinner.classList.add("d-flex")
   try {
-    const allJobs = await fetchJobs(url);
-    console.log(allJobs[0])
-    staticJobData = allJobs;
+    if (fetchJobsFromAPI) {
+      const allJobs = await fetchJobs(url);
+      if (!allJobs || allJobs && allJobs.length == 0) staticJobData = getBackupData();
+      else staticJobData = allJobs;
+    } else {
+      staticJobData = getBackupData();
+    }
     populateJobs({
-      data: allJobs,
+      data: staticJobData,
       container: document.getElementById("job-list"),
       containerId: "job-list",
       currentPage: 1
     });
-    populateFilterOptions(allJobs);
+    populateFilterOptions(staticJobData);
     spinner.classList.remove("d-flex")
     spinner.classList.add("d-none")
   } catch (error) {
@@ -613,9 +618,10 @@ function populateFilterOptions(allJobs) {
   });
 }
 
+var jobBaseUrl = "https://www.careers-page.com/korzen-health-2/job/";
+
 function openJobInNewTab(jobId) {
-  var baseUrl = "https://www.careers-page.com/korzen-health-2/job/";
-  window.open(`${baseUrl}${jobId}`, '_blank');
+  window.open(`${jobBaseUrl}${jobId}`, '_blank');
 }
 
 function checkAndUpdateCategoryFilter() {
@@ -673,7 +679,12 @@ function beforeShowFilterDropDown() {
   });
 }
 
-printAllJobs();
+/*
+ *  fetchJobsFromAPI: true to fetch jobs from API, false to use backup data
+ *   Add the Jobs Details Json to the getBackupData function.
+ */
+var fetchJobsFromAPI = true;
+printAllJobs(fetchJobsFromAPI);
 
 function generateRandomId(length) {
   let result = '';
@@ -684,6 +695,11 @@ function generateRandomId(length) {
   }
   return result;
 }
+/* populateJobs({
+  data: staticJobData,
+  container: document.getElementById("job-list"),
+}); */
+
 
 var STATES = {
   'AL': 'Alabama',
@@ -736,4 +752,9 @@ var STATES = {
   'WV': 'West Virginia',
   'WI': 'Wisconsin',
   'WY': 'Wyoming'
+}
+
+function getBackupData() {
+  var backupData = [{ "id": 1618334, "hash": "L8RRYR53", "position_name": "Clinical Medical Director | Wound Care Physician | Full-Time", "description": "<p><strong>Korzen Health is working with Healogics and Integris Baptist Health Medical Center to employ a Wound Care Physician.</strong></p>\n<p>We offer Wound Care and Hyperbaric Oxygen (HBO) Therapy training. You\n will have a full-team in place from the initial start date. The Wound \nCare Center is an Academic Affiliated program.</p>\n<p>You must have 2+ years of NP experience in a procedural environment \n(i.e. urgent care, wound care, specialist medical office).  We may be \nable to substitute similar RN experience in lieu.<br></p>\n<p><strong>Scope of Practice Includes:</strong></p>\n<ul><li>Full Team- Case Manager, Hyperbaric Oxygen Therapy Nurses, Office Manager, Front end and back end support. Great Work Flow!</li><li>Team will do Wound Care and Hyperbaric Oxygen Therapy</li><li>Team\n will average around 9-10 patients per day, with a majority of wound \ncare and less than 5% Hyperbaric Oxygen Therapy. We expect the patient \nvolume to increase to 15 patients in the future</li><li>EMR</li><li>Our clinic is generally open Monday-Friday 8am-5pm- 40 hours a week.</li><li>Compensation Model is base salary with bonus plan in place</li><li>You will work with Adult and Geriatric patients</li><li>Opportunity for growth within leadership</li></ul>\n<p><strong>Wound Care Nurse Practitioner and Experience Requirements:</strong></p>\n<ul><li>2+ years of NP experience in a procedural environment (i.e. \nurgent care, wound care, specialist medical office). We may be able to \nsubstitute  similar RN experience in lieu</li><li>Nurse Practitioner license</li><li>MSN, Board certified<br></li><li>DEA License</li></ul>\n<p><strong>Benefits Include</strong></p>\n<ul><li>Competitive Base Compensation, plus Bonus</li><li>Full Healthcare Benefits, 401K and retirement plan</li><li>31.5 PTO days</li></ul>\n<p><strong><em>Please Apply to learn more.... We will train you in wound care if you are interested.</em></strong></p>", "country": "United States", "state": "OK", "city": "Oklahoma City", "address": "", "zipcode": "", "location_display": "Oklahoma City, OK, United States", "currency_code": "USD", "salary_min": "230000.00", "salary_max": "300000.00", "is_salary_visible": true, "is_remote": null, "contract_details": "full_time", "is_pinned_in_career_page": false }, { "id": 1599463, "hash": "QX789343", "position_name": "Collaborative Medical Director- Wound Care Center", "description": "<p>Healogics is currently working with the Ascention Hospital System located in Tulsa, OK. We are looking for a Physician to be a Collaborative/Medical Director Role for our Wound Care Center.</p>\n<p><strong>Details:</strong></p>\n<p>- Up to 10 hours per month stipend for Medical Director Role</p>\n<p>- Flat Rate for Collaboration of NP within the center.</p>\n<p>- Provider does not have to be on-site or have any direct patient care.</p>\n<p>- PRN opportunity available, but not mandatory.</p>\n<p>- Opportunity for growth within leadership.</p>\n<p>- Center is open Monday - Friday 8:00am-4:00pm - No nights, no weekends, no call.</p>\n<p>- Full Team- Case Manager, Hyperbaric Oxygen Therapy Nurses, Office Manager, Front end and back end support. Great Work Flow!</p>\n<p>- We offer advanced wound-care treatments to promote healing, including:</p>\n<ul><li>Cellulitis therapy</li><li>Compression therapy</li><li>Hyperbaric oxygen therapy</li><li>Infection management and prevention</li><li>Wound cleaning</li><li>Wound dressing</li></ul>\n<p><strong>MUST HAVE:</strong></p>\n<p>- Provider must have a procedural case log(within 2 years), as you will be on active staff at the supporting hospital.</p>\n<p>- Must be Board Certified</p>\n<p>Job Types: Part-time, Contract</p>\n<p>Salary: $135.00 - $145.00 per hour</p>\n<p>License/Certification:</p>\n<ul><li>OK Medical License (Required)</li><li>Board certification (Required)</li></ul><p>Please apply today to learn more!!!!</p>", "country": "United States", "state": "OK", "city": "Tulsa", "address": "", "zipcode": "", "location_display": "Tulsa, OK, United States", "currency_code": "USD", "salary_min": "135.00", "salary_max": "145.00", "is_salary_visible": true, "is_remote": null, "contract_details": "part_time", "is_pinned_in_career_page": false }, { "id": 1556369, "hash": "L77WY8X5", "position_name": "Nurse Practitioner (NP) - Wound Care", "description": "<p><strong>Korzen Health is working with Healogics and Baystate Health to employ a Nurse Practitioner for our Wound Care program.</strong></p>\n<p>We offer Wound Care and Hyperbaric Oxygen (HBO) Therapy training. You will have a full-team in place from the initial start date. The Wound Care Center is an Academic Affiliated program.</p>\n<p>You must have 2+ years of NP experience in a procedural environment (i.e. urgent care, wound care, specialist medical office). We may be able to substitute similar RN experience in lieu.</p>\n<p><strong>Scope of Practice Includes:</strong></p>\n<ul><li>Performing ï»¿assessment, debridement, wound dressings, skin substitutes and hyperbaric oxygen treatment.</li><li>Treatment of an average of 10-15 patients per day, with a majority of wound care and less than 5% Hyperbaric Oxygen Therapy (patient volume varies).</li><li>Our clinic is generally open Monday-Friday 8am-5pm- 40 hours a week.</li><li>Full Team- Case Manager, Hyperbaric Oxygen Therapy Nurses, Office Manager, Front end and back end support. Great Work Flow!ï»¿</li><li>Treatment of Adult and Geriatric patients</li><li>Compensation - base salary with bonus plan in place</li><li>Opportunity for growth within leadership</li></ul>\n<p><strong>Wound Care Nurse Practitioner and Experience Requirements:</strong></p>\n<ul><li>2+ years of NP experience in a procedural environment (i.e. urgent care, wound care, specialist medical office). We may be able to substitute similar RN experience in lieu</li><li>Nurse Practitioner license</li><li>MSN, Board certified</li><li>DEA License</li></ul>\n<ul><li>Benefits Include</li><li>Competitive Base Compensation. Base Salary and Bonus. Compensation will be 125K++ including bonus</li><li>Full Healthcare Benefits, 401K and retirement plan</li><li>PTO days which include all major holidays</li></ul>\n<p><em><strong>Please Apply to learn more....</strong></em></p>", "country": "United States", "state": "MA", "city": "Springfield", "address": "", "zipcode": "", "location_display": "Springfield, MA, United States", "currency_code": "USD", "salary_min": "120000.00", "salary_max": "145000.00", "is_salary_visible": true, "is_remote": null, "contract_details": "full_time", "is_pinned_in_career_page": false }];
+  return backupData;
 }
