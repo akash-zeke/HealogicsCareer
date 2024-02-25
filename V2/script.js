@@ -681,7 +681,7 @@ function beforeShowFilterDropDown() {
 
 /*
  *  fetchJobsFromAPI: true to fetch jobs from API, false to use backup data
- *   Add the Jobs Details Json to the getBackupData function.
+ *   Add the Jobs Details Json to the backupData Array.
  */
 var fetchJobsFromAPI = true;
 printAllJobs(fetchJobsFromAPI);
