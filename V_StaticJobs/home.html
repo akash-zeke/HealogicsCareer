@@ -1,0 +1,454 @@
+<html>
+
+<head>
+  <title>Home</title>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* Override Bootstrap's default primary color */
+    .btn-primary:hover,
+    .btn-primary:focus {
+      color: rgb(13, 97, 120);
+      background-color: #fff;
+      border-color: rgb(13, 97, 120);
+      box-shadow: 0 0 0 0.1rem rgba(13, 97, 120, 0.5);
+    }
+
+    .btn-primary,
+    .btn-primary.disabled,
+    .btn-primary:disabled {
+      color: #fff;
+      background-color: rgb(13, 97, 120);
+      border-color: rgb(13, 97, 120);
+    }
+
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .show>.btn-primary.dropdown-toggle,
+    .action-panel .btn.show {
+      color: #fff;
+      background-color: rgb(13, 97, 120);
+      border-color: rgb(13, 97, 120);
+    }
+
+    /* .btn-primary:not(:disabled):not(.disabled):active:focus,
+      .btn-primary:not(:disabled):not(.disabled).active:focus,
+      .show > .btn-primary.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.25rem rgba(13, 97, 120, 0.5);
+      } */
+
+    /* override default dark color for btn */
+    .btn-outline-dark {
+      color: rgb(13, 97, 120);
+      background-color: #fff;
+      border-color: rgba(13, 97, 120, 0.5);
+      box-shadow: 0 0 0 0.1rem rgba(13, 97, 120, 0.5);
+    }
+
+    .btn-outline-dark.disabled,
+    .btn-outline-dark:disabled {
+      color: rgb(13, 97, 120);
+      background-color: #fff;
+      border-color: rgba(13, 97, 120, 0.5);
+      /* box-shadow: none; */
+    }
+
+    .btn-outline-dark:not(:disabled):not(.disabled):active,
+    .btn-outline-dark:not(:disabled):not(.disabled).active,
+    .show>.btn-outline-dark.dropdown-toggle,
+    .btn-outline-dark:hover,
+    .btn-outline-dark:focus {
+      color: #fff;
+      background-color: rgb(13, 97, 120);
+      border-color: rgb(13, 97, 120);
+      /* box-shadow: none; */
+    }
+
+    .text-primary {
+      color: rgb(13, 97, 120) !important;
+    }
+
+    .pagination .active > .page-link, .pagination .page-link.active  {
+      z-index: 3;
+      color: var(--bs-pagination-active-color);
+      background-color: rgba(13, 97, 120);
+      border-color: rgba(13, 97, 120);
+    }
+
+    .page-link, .page-link:hover{
+      color: rgb(13, 97, 120);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header" class="d-flex align-items-center justify-content-between px-4" style="height: 88px">
+    <div class="d-flex align-items-center">
+      <div class="flex-item">
+        <img src="Healogics logo.png" alt="logo" class="header-logo" />
+      </div>
+      <div class="flex-item">
+        <h3>Careers</h3>
+      </div>
+    </div>
+
+    <div class="flex-item d-flex flex-column" style="margin-left: 0">
+      <span class="flex-item align-self-end sign-in pt-2 d-none">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        <a href="home.html" class="menu-item">Sign in</a>
+      </span>
+      <div class="flex-item d-inline-flex justify-content-between pt-2">
+        <div class="flex-item d-inline fs-14 mx-20">
+          <a class="header-menu-item" href="https://www.healogics.com/careers/">
+            Careers Home
+          </a>
+        </div>
+        <div class="flex-item d-inline fs-14 mx-20">
+          <a class="header-menu-item" href="#"> Search for Jobs </a>
+        </div>
+        <div class="flex-item d-inline fs-14 margin-left-20">
+          <a class="header-menu-item" href="https://korzenhealth.com/contact-us-1">
+            Introduce yourself
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div id="main-container">
+      <!-- Input container Starts here -->
+      <div class="action-panel">
+        <div class="input-container-elem search-container">
+          <div class="flex-nowrap input-group search-input-box">
+            <span class="input-group-text" id="addon-wrapping">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <!-- <img src="https://img.icons8.com/ios/50/000000/search--v1.png" style="width: 20px; height: 20px;"> -->
+            </span>
+            <input id="search-input" type="text" class="form-control" placeholder="Search for jobs or keywords"
+              aria-label="Username" aria-describedby="addon-wrapping" />
+          </div>
+
+          <!-- <input type="text" placeholder="Search for jobs or keywords"> -->
+          <button class="btn btn-primary margin-left-10" id="searcgButton" onclick="search()">
+            Search
+          </button>
+        </div>
+        <div class="input-container-elem my-16" id="filter-container">
+          <!-- Distance Or Location Dropdown Starts -->
+          <div class="dropdown margin-right-16">
+            <button onclick="beforeShowFilterDropDown()" class="btn btn-outline-dark dropdown-toggle" type="button"
+              id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              Location <!--Distance  or Location -->
+            </button>
+            <ul class="dist-loc dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
+              <!--   <li>
+                <div class="form-check mb-2 filter-item">
+                  <input class="form-check-input" type="radio" name="distLocRadios" id="distLocRadio1"
+                    value="option1" />
+                  <label class="form-check-label" for="distLocRadio1">
+                    Distance
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="form-check mb-3 filter-item">
+                  <input class="form-check-input" type="radio" name="distLocRadios" id="distLocRadio2"
+                    value="option2" />
+                  <label class="form-check-label" for="distLocRadio2">
+                    Location
+                  </label>
+                </div>
+              </li> -->
+              <li class="border-top pt-3 d-none">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="dropdown">
+                  Close
+                </button>
+              </li>
+              <li class="d-none pt-2" id="distanceOptions">
+                <div class="mt-2">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search by postal code"
+                      aria-label="Search by postal code" />
+                    <button class="btn btn-outline-secondary" type="button">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </div>
+                  <label for="distanceSelect" class="mb-1">Distance:</label>
+                  <select class="form-select mb-3" id="distanceSelect">
+                    <option value="10">10 miles</option>
+                    <option value="25">25 miles</option>
+                    <option value="50">50 miles</option>
+                    <option value="100">100 miles</option>
+                    <option value="any">Any Distance</option>
+                  </select>
+                </div>
+              </li>
+              <li class="scrollable-div" id="locationOptions">
+                <div class="mt-2">
+                  <div class="d-none input-group mb-3 pt-1">
+                    <input type="text" class="form-control" placeholder="Search All Locations"
+                      aria-label="Search All Locations" />
+                    <button class="btn btn-outline-secondary" type="button">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </div>
+                  <!--                   <label for="locationRegion">Location Region/State/Province:</label> -->
+                  <div id="location-drop-down" class="form-check">
+                    <!--  <div class="filter-item">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                      <label class="form-check-label" for="defaultCheck1">
+                        Alabama
+                      </label>
+                    </div> -->
+                  </div>
+                  <!-- Add more checkboxes as needed -->
+                  <!--   <label for="locationCountry">Location Country:</label>
+                  <div class="form-check mb-3">
+                    <div class="filter-item">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                      <label class="form-check-label" for="defaultCheck2">
+                        United States
+                      </label>
+                    </div>
+                  </div> -->
+                </div>
+              </li>
+              <li class="pt-3 border-top filter-footer" id="distLocButtonsRow">
+                <div onclick="resetLocationFilter()" class="clear-button">Clear</div>
+                <button onclick="updateLocationFilter()" type="button" class="btn btn-primary btn-sm">
+                  View Jobs
+                </button>
+              </li>
+            </ul>
+          </div>
+          <!-- Distance Or Location Dropdown Ends -->
+
+          <!-- Job Category Dropdown Starts -->
+          <div class="dropdown margin-right-16">
+            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="jobCategoryDropdownButton"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Job Category
+            </button>
+            <ul class="jobCateg dropdown-menu p-3" aria-labelledby="jobCategoryDropdownButton">
+              <li>
+                <div class="form-check filter-item mb-1">
+                  <input class="form-check-input" type="checkbox" id="medicalDirectorCheckbox" />
+                  <label class="form-check-label" for="medicalDirectorCheckbox">
+                    Medical Director (MD/DO)
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="form-check filter-item mb-1">
+                  <input class="form-check-input" type="checkbox" id="nursePractitionerCheckbox" />
+                  <label class="form-check-label" for="nursePractitionerCheckbox">
+                    Nurse Practitioner (NP)
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="form-check mb-3 filter-item mb-1">
+                  <input class="form-check-input" type="checkbox" id="physicianCheckbox" />
+                  <label class="form-check-label" for="physicianCheckbox">
+                    Physician (MD/DO)
+                  </label>
+                </div>
+              </li>
+              <li id="jobCatButtonsRow" class="border-top filter-footer pt-3 filter-action-foot">
+                <div class="clear-button">Clear</div>
+                <button onclick="checkAndUpdateCategoryFilter()" type="button" class="btn btn-primary btn-sm">
+                  View Jobs
+                </button>
+              </li>
+            </ul>
+          </div>
+          <!-- Job Category Dropdown Ends -->
+
+          <!-- Time Type Dropdown Starts -->
+          <div class="dropdown">
+            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="timeTypeDropdownButton"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Time Type
+            </button>
+            <ul class="time-type dropdown-menu p-3" aria-labelledby="timeTypeDropdownButton">
+              <li>
+                <div class="form-check filter-item">
+                  <input value="full_time" class="form-check-input" type="checkbox" id="fullTimeCheckbox" />
+                  <label class="form-check-label" for="fullTimeCheckbox">
+                    Full Time (FT)
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="form-check filter-item">
+                  <input value="part_time" class="form-check-input" type="checkbox" id="partTimeCheckbox" />
+                  <label class="form-check-label" for="partTimeCheckbox">
+                    Part Time (PT)
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="form-check mb-3 filter-item">
+                  <input value="freelance" class="form-check-input" type="checkbox" id="freelanceCheckbox" />
+                  <label class="form-check-label" for="freelanceCheckbox">
+                    As-needed (PRN)
+                  </label>
+                </div>
+              </li>
+              <li id="timeTypebuttonsRow" class="border-top pt-3 filter-footer">
+                <div class="clear-button">Clear</div>
+                <button onclick="checkAndListJobData()" type="button" class="btn btn-primary btn-sm">
+                  View Jobs
+                </button>
+              </li>
+            </ul>
+          </div>
+          <!-- Time Type Dropdown Ends -->
+        </div>
+        <div id="filter-badge-conatiner">
+          <div id="badge-list">
+            <!--   <span class="badge rounded-pill text-bg-light">Light <span class="badge-close"><i
+                  class="fa-solid fa-xmark"></i></span></span>
+            <span class="badge rounded-pill text-bg-light">Light <span class="badge-close"><i
+                  class="fa-solid fa-xmark"></i></span></span>
+            <span class="badge rounded-pill text-bg-light">Light <span class="badge-close"><i
+                  class="fa-solid fa-xmark"></i></span></span> -->
+          </div>
+          <div class="d-none" id="clear-bt-wrap">
+            <button onclick="clearAllFilter()" id="clear-filter" class="btn btn-primary btn-sm mt-3 px-3">
+              Clear All
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Input Container Ends here-->
+
+      <!-- Job List Container Starts here -->
+      <div class="jobs-and-intro-container">
+        <div class="jobsAndDescription d-flex justify-content-center gap-4 py-4 mx-auto">
+          <div class="border-radius flex-item flex-shrink-0" id="joblist-container">
+            <div class="py-3 px-4 fw-bolder text-uppercase job-header">
+              <span id="no-of-jobs-span"></span><span> Jobs Found</span>
+            </div>
+            <div id="job-list"></div>
+            <div class="pagination-controller d-none flex-column text-center py-4">
+
+              <nav aria-label="Page navigation example">
+                <ul id="pagination-demo" class="pagination justify-content-center"></ul>
+
+                <nav style="display: inline-block" aria-label="Page navigation example">
+                  <ul id="pagination-ul" class="pagination mb-0 justify-content-center">
+                    <li id="pagination-li-previous" class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <span class="page-link">1</span>
+                    </li>
+                    <!--                     <li class="page-item">
+                      <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">4</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">5</a>
+                    </li> -->
+                    <li id="pagination-li-next" class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <div class="mt-2 fs-13">
+                  <span id="current-page-description" class="fc-light">x - y of N jobs</span>
+                </div>
+
+            </div>
+            <div id="loading-spinner" class="d-flex justify-content-center">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <!-- Intro Container -->
+          <div class="border-radius flex-item" id="intro-container">
+            <div>
+              <h6>Come Heal With Us!</h6>
+              <div id="job-description">
+                <img src="Healogics logo.png" alt="logo" style="
+                      max-width: 100%;
+                      max-height: 100%;
+                      margin-top: 16px;
+                      margin-bottom: 10px;
+                    " />
+                <div style="text-align: justify">
+                  Healogics is driving wound healing and prevention forward to
+                  help heal more wounds and change more lives. Our
+                  compassionate wound specialists have touched the lives of
+                  more than 2.5 million people, preserving dignity and
+                  restoring hope. The impact of healing wounds through
+                  innovative care resonates with our wound care doctors,
+                  nurses and other specialists who witness lives changed and
+                  build strong relationships with patients and their families.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Description Container -->
+          <div class=" flex-column border-radius flex-item" id="description-container">
+          </div>
+        </div>
+      </div>
+      <hr class="footer-hr" />
+      <div class="footer text-center mt-4 pb-3">
+        <h6>Follow Us</h6>
+        <ul class="d-flex justify-content-center footer-menu-group">
+          <li class="footer-menu-item fs-20">
+            <a href="https://www.facebook.com/Healogics/">
+              <i class="fa-brands fa-facebook" title="Facebook"></i>
+            </a>
+          </li>
+          <li class="footer-menu-item fs-22">
+            <a href="https://www.youtube.com/user/Healogics">
+              <i class="fa-brands fa-youtube" title="Youtube"></i>
+            </a>
+          </li>
+          <li class="footer-menu-item fs-21">
+            <a href="https://twitter.com/Healogics">
+              <i class="fa-brands fa-x-twitter" title="X"></i>
+            </a>
+          </li>
+          <li class="footer-menu-item fs-20">
+            <a href="https://www.linkedin.com/company/healogics-llc">
+              <i class="fa-brands fa-linkedin" title="Linkedin"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src = "pagination.js" type="text/javascript"></script> -->
+  <script src="script.js"></script>
+</body>
+
+</html>
