@@ -268,7 +268,7 @@
                 </div>
               </li>
               <li id="jobCatButtonsRow" class="border-top filter-footer pt-3 filter-action-foot">
-                <div class="clear-button">Clear</div>
+                <div onclick="clearCategoryFilter();checkAndUpdateCategoryFilter();" class="clear-button">Clear</div>
                 <button onclick="checkAndUpdateCategoryFilter()" type="button" class="btn btn-primary btn-sm">
                   View Jobs
                 </button>
@@ -309,7 +309,7 @@
                 </div>
               </li>
               <li id="timeTypebuttonsRow" class="border-top pt-3 filter-footer">
-                <div class="clear-button">Clear</div>
+                <div onclick="clearTypeFilter();checkAndListJobData()" class="clear-button">Clear</div>
                 <button onclick="checkAndListJobData()" type="button" class="btn btn-primary btn-sm">
                   View Jobs
                 </button>

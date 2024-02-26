@@ -736,9 +736,33 @@ function resetLocationFilter() {
   listJobData(filterOptions);
 }
 
+function clearCategoryFilter() {
+  var medicalDirectorCheckbox = document.getElementById(
+    "medicalDirectorCheckbox"
+  );
+  var nursePractitionerCheckbox = document.getElementById(
+    "nursePractitionerCheckbox"
+  );
+  var physicianCheckbox = document.getElementById("physicianCheckbox");
+  medicalDirectorCheckbox.checked = false;
+  nursePractitionerCheckbox.checked = false;
+  physicianCheckbox.checked = false;
+};
+
+function clearTypeFilter() {
+  var fullTimeCheckBox = document.getElementById("fullTimeCheckbox");
+  var partTimeCheckBox = document.getElementById("partTimeCheckbox");
+  var freelanceCheckBox = document.getElementById("freelanceCheckbox");
+  fullTimeCheckBox.checked = false;
+  partTimeCheckBox.checked = false;
+  freelanceCheckBox.checked = false;
+}
+
 function clearAllFilter() {
   filterOptions = {};
   listJobData(filterOptions);
+  clearCategoryFilter();
+  clearTypeFilter();
 }
 
 function beforeShowFilterDropDown() {
