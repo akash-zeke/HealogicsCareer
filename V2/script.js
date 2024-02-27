@@ -365,7 +365,7 @@ function listJobData(filterOptions) {
 function checkAndListJobData() {
   var fullTimeCheckBox = document.getElementById("fullTimeCheckbox");
   var partTimeCheckBox = document.getElementById("partTimeCheckbox");
-  var freelanceCheckBox = document.getElementById("freelanceCheckbox");
+  // var freelanceCheckBox = document.getElementById("freelanceCheckbox");
 
   var jobTypes = [];
   if (fullTimeCheckBox.checked) {
@@ -374,9 +374,9 @@ function checkAndListJobData() {
   if (partTimeCheckBox.checked) {
     jobTypes.push("part_time");
   }
-  if (freelanceCheckBox.checked) {
+  /* if (freelanceCheckBox.checked) {
     jobTypes.push("freelance");
-  }
+  } */
 
   filterOptions["jobTypes"] = jobTypes;
   listJobData(filterOptions);
@@ -691,7 +691,7 @@ function populateFilterOptions(allJobs) {
 var jobBaseUrl = "https://www.careers-page.com/korzen-health-2/job/";
 
 function openJobInNewTab(jobId) {
-  window.open(`${jobBaseUrl}${jobId}`, "_blank");
+  window.open(`${jobBaseUrl}${jobId}/apply`, "_blank");
 }
 
 function checkAndUpdateCategoryFilter() {
@@ -752,10 +752,10 @@ function clearCategoryFilter() {
 function clearTypeFilter() {
   var fullTimeCheckBox = document.getElementById("fullTimeCheckbox");
   var partTimeCheckBox = document.getElementById("partTimeCheckbox");
-  var freelanceCheckBox = document.getElementById("freelanceCheckbox");
+  // var freelanceCheckBox = document.getElementById("freelanceCheckbox");
   fullTimeCheckBox.checked = false;
   partTimeCheckBox.checked = false;
-  freelanceCheckBox.checked = false;
+  // freelanceCheckBox.checked = false;
 }
 
 function clearAllFilter() {
