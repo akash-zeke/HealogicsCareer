@@ -749,7 +749,7 @@ function populateFilterOptions(allJobs) {
 var jobBaseUrl = "https://www.careers-page.com/korzen-health-2/job/";
 
 function openJobInNewTab(jobId) {
-  window.open(`${jobBaseUrl}${jobId}`, "_blank");
+  window.open(`${jobBaseUrl}${jobId}/apply`, "_blank");
 }
 
 function checkAndUpdateCategoryFilter() {
